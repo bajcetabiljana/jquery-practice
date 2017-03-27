@@ -1,1 +1,9 @@
-3. Stavke na listi mogu da se edituju i mogu da se brisu
+1. To do lista:
+- korisnik moze da upisuje novi item
+- kada taj novi item ode u toDolistu deo gde se upisuje novi aritcal mora da bude ponovo prazan za unos novog itema.
+
+2. Stavke na listi mogu da se:
+- edituju 
+- brisu
+
+3. Dodaj strelice gore/dole za pomeranje artikla za jedno mesto gore/dole
