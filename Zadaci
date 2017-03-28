@@ -1,1 +1,14 @@
-3. Stavke na listi mogu da se edituju i mogu da se brisu
+Napravi todo listu:
+
+1. Treba da ima jedno polje za unos teksta
+2. Jedno dugme "Add" 
+3. Listu prethodno dodatih stavki
+
+
+User story:
+When a user enters the text into the input field
+and clicks the "Add button
+then add the text from the input field into the list of items
+then clear the input field.
+
+4. Stavke na listi mogu da se edituju i mogu da se brisu
