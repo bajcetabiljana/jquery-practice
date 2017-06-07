@@ -224,5 +224,143 @@ stan1.addTenant(tenant3);
 
 console.log(nasaZgrada.prosekGodinaStanara());
 
+//// Odavde
+
+
+//Object Constructor
+function Tenant(name, age, gender, address) {
+    this.firstName = name;
+    this.age = age;
+    this.gender = gender;
+    this.address = address;
+    this.sendMessageToUser = function() {
+        console.log("Hello: " + " " + this.firstName);
+    }
+}
+function Appartment(number, title, locked) {
+
+    //kako on zna da je sta po default-u zakljucan kad mu nismo odredili da je true?
+    this.AppartmentNumber = number;
+    this.AppartmentTitle = title;
+    this.IsAppartmentLocked = locked;
+    this.tenants = [];
+    this.addTenant = function(tenant) {
+        this.tenants.push(tenant);
+    };
+    this.IsLocked = function() {
+        return this.IsAppartmentLocked;
+    };
+    this.lockAppartmant = function() {
+        this.IsAppartmentLocked = true;
+    }
+    this.unlockAppartmant = function() {
+        this.IsAppartmentLocked = false;
+    };
+    this.tenantsList = function() {
+        this.tenants.forEach(tenant => console.log(tenant.firstName));
+    };
+    this.averageAgeOfTenants = function() {
+       var totalAge = this.tenants.map(tenant => tenant.age).reduce((x,y) => x+y);
+       console.log(totalAge);
+       var brojStanara = this.tenants.length;
+       console.log(totalAge/brojStanara);
+    }
+    this.averageLenghtOfNames = function() {
+        var namesLength = this.tenants.map(tenant => tenant.firstName.length).reduce((x,y) => x+y);
+        var tenantsNumb = this.tenants.length;
+        console.log(namesLength/tenantsNumb);
+    }
+    this.genderMajority = function() {
+        var tenantGender = this.tenants.map(tenant => tenant.gender);
+        // var males = this.tenants.filter(tenant => tenant.gender=='male').length;
+
+        console.log(tenantGender);
+        var males = tenantGender.filter(gender => gender=='male').length;
+        var females = tenantGender.filter(gender => gender=='female').length;
+        console.log('males : ' + males);
+        console.log('females : ' + females);
+        var tenantsNumb = this.tenants.length;
+        if(males < females ){
+            console.log("Zene su u vecini");
+        }
+            else if(males > females) {
+                console.log("Muskarci su u vecini");
+            }
+            else {
+                console.log("Isti broj muskih i zenskih stanara");
+            }
+    }
+}
+
+function Building() {
+    this.appartments = [];
+    this.newAppartment = function(appartment) {
+        this.appartments.push(appartment);
+    }
+    this.appListOfTenants = function() {
+        this.appartments.map(appartment => console.log(appartment.tenantsList()));
+    };
+
+
+}
+
+
+//function out of Constructor ???????
+var sendMessageToUser = function(x) {
+    console.log("Hello: " + " " + x.firstName);
+}
+
+//Creating new Object
+var appartment1 = new Appartment(1, 'Bajceta', true);
+var appartment2 = new Appartment(2, 'Linson', false);
+var tenant1 = new Tenant('Vlada',37,'male','Malmo');
+var tenant2 = new Tenant('Masa',7,'female','Malmo');
+var tenant3 = new Tenant('Iva',5,'female','Malmo');
+var tenant4 = new Tenant('Bilja',40,'female','Malmo');
+
+var tenant5 = new Tenant('Pit',52,'male','Malmo');
+var tenant6 = new Tenant('Mia',7,'male','Malmo');
+var tenant7 = new Tenant('Lora',12,'female','Malmo');
+var tenant8 = new Tenant('Zeta',47,'male','Malmo');
+var NasaMalaZgradica = new Building();
+
+
+appartment1.addTenant(tenant1);
+appartment1.addTenant(tenant2);
+appartment1.addTenant(tenant3);
+appartment1.addTenant(tenant4);
+
+console.log('Lista stanara');
+appartment1.tenantsList();
+
+appartment2.addTenant(tenant5);
+appartment2.addTenant(tenant6);
+appartment2.addTenant(tenant7);
+appartment2.addTenant(tenant8);
+
+NasaMalaZgradica.newAppartment(appartment1);
+NasaMalaZgradica.newAppartment(appartment2);
+
+NasaMalaZgradica.appListOfTenants();
+appartment2.averageAgeOfTenants();
+appartment2.averageLenghtOfNames();
+
+
+//poziv funcije koja se nalazi u nekom constructoru
+tenant1.sendMessageToUser();
+//poziv funckija koja se nalazi van objekta ?????????
+sendMessageToUser(tenant1);
+
+appartment1.genderMajority();
+
+appartment2.genderMajority();
+
+
+
+
+
+
+
+
 
 
