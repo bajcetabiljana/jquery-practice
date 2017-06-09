@@ -348,7 +348,13 @@ function Lista() {
         return this.lista.forEach(stavka => stavka.kupiti());
     }
     this.luksuznaRoba = function() {
-        return this.lista.filter(stavka => stavka.luksuzCena).map(stavka => stavka.imeStavke);
+        return this.lista.filter(stavka => stavka.luksuzCena).map(stavka => stavka.imeStavke)
+        ;
+    }
+    this.obrisiStavku = function(stavka) {
+        return function() {
+            return this.lista.splice(stavka,1);
+        }
     }
 
 }
@@ -374,3 +380,7 @@ console.log(lista1.ukupnaCenaStavke());
 console.log(lista1.listaZaKupovinu());
 console.log(lista1.kupljeneStavke());
 console.log(lista1.luksuznaRoba());
+console.log('gde sam?')
+console.log(lista1.obrisiStavku('kupus'));
+console.log(lista1.spisak());
+
