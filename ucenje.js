@@ -14,26 +14,26 @@ console.log(s2.reduce(add));
 
 
 var users = [
-    {
-        name: 'Mike',
-        gender: 'male',
-        age: 25
-    },
-    {
-        name: 'Ana',
-        gender: 'female',
-        age: 29
-    },
-    {
-        name: 'Marija',
-        gender: 'female',
-        age: 33
-    }
+{
+    name: 'Mike',
+    gender: 'male',
+    age: 25
+},
+{
+    name: 'Ana',
+    gender: 'female',
+    age: 29
+},
+{
+    name: 'Marija',
+    gender: 'female',
+    age: 33
+}
 ];
 
 
 users.filter(user => user.gender == 'male')
-    .forEach(user => console.log(user.name));
+.forEach(user => console.log(user.name));
 
 var totalAge = users.map(user => user.age).reduce(add);
 console.log(totalAge);
@@ -200,10 +200,10 @@ function Appartment(number, title, locked) {
         this.tenants.forEach(tenant => console.log(tenant.firstName));
     };
     this.averageAgeOfTenants = function() {
-       var totalAge = this.tenants.map(tenant => tenant.age).reduce((x,y) => x+y);
-       console.log(totalAge);
-       var brojStanara = this.tenants.length;
-       console.log(totalAge/brojStanara);
+        var totalAge = this.tenants.map(tenant => tenant.age).reduce((x,y) => x+y);
+        console.log(totalAge);
+        var brojStanara = this.tenants.length;
+        console.log(totalAge/brojStanara);
     }
     this.averageLenghtOfNames = function() {
         var namesLength = this.tenants.map(tenant => tenant.firstName.length).reduce((x,y) => x+y);
@@ -223,12 +223,12 @@ function Appartment(number, title, locked) {
         if(males < females ){
             console.log("Zene su u vecini");
         }
-            else if(males > females) {
-                console.log("Muskarci su u vecini");
-            }
-            else {
-                console.log("Isti broj muskih i zenskih stanara");
-            }
+        else if(males > females) {
+            console.log("Muskarci su u vecini");
+        }
+        else {
+            console.log("Isti broj muskih i zenskih stanara");
+        }
     }
 }
 
@@ -348,9 +348,9 @@ function Lista() {
         return this.lista.forEach(stavka => stavka.kupiti());
     }
     this.luksuznaRoba = function() {
-        return this.lista.filter(stavka => stavka.luksuzCena).map(stavka => console.log(stavka.imeStavke));
-        }
+        return this.lista.filter(stavka => stavka.luksuzCena).map(stavka => stavka.imeStavke);
     }
+
 }
 
 var stavka1 =  new Stavka('kupus', 1, 10, true);
