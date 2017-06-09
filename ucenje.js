@@ -164,66 +164,6 @@ var brojevi = [1, 5, 10];
 var uvecavaci = brojevi.map(uvecajBroj);
 uvecavaci.forEach(fn => console.log(fn(33)));
 
-function Appartment(locked, number, tenant) {
-    this.locked = locked;
-    this.numberOfAppartment = number;
-    this.tenants = [];
-    this.isLocked = function () {
-        return this.locked;
-    };
-    this.lock = function () {
-        this.locked = true;
-    }
-    this.unLock = function () {
-        this.locked = false;
-    }
-    this.addTenant = function(tenant){
-        this.tenants.push(tenant);
-    }
-}
-function Building() {
-    this.appartments = [];
-    this.add = function(appartment) {
-        this.appartments.push(appartment);
-    }
-    this.lock = function() {
-        this.appartments.forEach(appartment => appartment.lock());
-    }
-    this.listOfAppartNumb = function() {
-         this.appartments.forEach(appartment => console.log(appartment.numberOfAppartment));
-    }
-    this.listOfTenants = function() {
-        this.appartments.forEach(appartment => console.log(appartment.tenant));
-    }
-    this.brStanaIStanara = function(){
-        this.appartments.forEach(appartment => console.log(appartment.numberOfAppartment + " " + appartment.tenant));
-    }
-    this.prosekGodinaStanara = function() {
-        var add = (x,y) => x+y;
-        var totalAge = this.appartments
-            .map(apt => apt.tenants.map(user => user.age).reduce(add))
-            .reduce(add);
-        var numberOfTenants = this.appartments.map(apt => apt.tenants.length).reduce(add);
-        return totalAge/numberOfTenants;
-    }
-}
-
-var nasaZgrada = new Building();
-var stan1 = new Appartment(true, 33,'Bajceta');
-nasaZgrada.add(stan1);
-nasaZgrada.lock();
-nasaZgrada.listOfAppartNumb();
-nasaZgrada.listOfTenants();
-nasaZgrada.brStanaIStanara();
-var tenant1 = new User('vlada',37,'male');
-var tenant2= new User("Masa", 7, "female");
-var tenant3= new User("Iva", 5, "female");
-stan1.addTenant(tenant1);
-stan1.addTenant(tenant2);
-stan1.addTenant(tenant3);
-
-console.log(nasaZgrada.prosekGodinaStanara());
-
 //// Odavde
 
 
@@ -354,13 +294,77 @@ sendMessageToUser(tenant1);
 appartment1.genderMajority();
 
 appartment2.genderMajority();
+//
+//TO DO LISTA
+function Stavka(ime, kolicina, cena, kupljena) {
+    this.imeStavke = ime;
+    this.kolicina = kolicina;
+    this.cenaPoKomadu = cena;
+    this.kupljena = kupljena;
+    this.ukupnaCena = function() {
+        return this.lista.map(stavka => stavka.cenaPoKomadu * stavka.kolicina * stavka.kolicina);
+    }
+    this.kupljeniArtikli  = function() {
+        if (this.kupljena == true) {
+            console.log(this.imeStavke + ' ' +'je kupljen');
+        }
+    }
+    this.kupiti = function() {
+        if (this.kupljena == false) {
+            console.log(this.imeStavke + 'kupiti');
+        }
+    }
+}
 
+function Lista() {
+    this.lista = [];
+    this.dodajNaListu = function(stavka) {
+        this.lista.push(stavka);
+    }
+    this.spisak = function() {
+        console.log('Spisak stavki');
+        this.lista.forEach((stavka,index) => console.log('Stavka ' + (index+1) +  ' ' + stavka.imeStavke + ' ' + stavka.cenaPoKomadu));
+    }
+    this.spisakPoKilazi = function(){
+        //return this.lista.sort((a,b) => a.kolicina>b.kolicina ? 1 : -1);
+        return this.lista.sort((a,b) => b.kolicina-a.kolicina);
+    }
+    this.ukupnoStavki = function() {
+        return this.lista.length;
+    }
+    this.spisakOdNajskupljeStavke= function() {
+        return this.lista.sort((a,b) => a.cenaPoKomadu < b.cenaPoKomadu ? 1 : -1);
+    }
+    this.ukupnaCenaStavke = function() {
+        return this.lista.sort((a,b) => a.ukupnaCena - b.ukupnaCena);
+    }
+    this.kupljeneStavke = function() {
+        return this.lista.forEach(stavka => stavka.kupljeniArtikli()); {
 
+        }
+    }
+    this.listaZaKupovinu = function() {
+        return this.lista.forEach(stavka => stavka.kupiti());
+    }
+}
 
-
-
-
-
-
-
-
+var stavka1 =  new Stavka('kupus', 1, 10, true);
+var stavka2 =  new Stavka('jabuka', 5, 15, false);
+var stavka3 =  new Stavka('ananas', 3, 40, false);
+console.log(stavka1);
+var lista1 = new Lista();
+lista1.dodajNaListu(stavka1);
+lista1.dodajNaListu(stavka2);
+lista1.dodajNaListu(stavka3);
+console.log(lista1);
+console.log('TEST' + ' ' + lista1.lista.length);
+console.log('TEST2' + ' ' + lista1.ukupnoStavki());
+lista1.spisak();
+console.log(lista1.spisakPoKilazi());
+console.log(Object.keys(lista1));
+console.log(lista1.spisakOdNajskupljeStavke());
+console.log('Test 3');
+console.log('Stavke po ukupnoj ceni' + lista1.ukupnaCenaStavke());
+console.log(lista1.ukupnaCenaStavke());
+console.log(lista1.listaZaKupovinu());
+console.log(lista1.kupljeneStavke())
