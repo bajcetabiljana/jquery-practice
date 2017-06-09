@@ -314,6 +314,7 @@ function Stavka(ime, kolicina, cena, kupljena) {
             console.log(this.imeStavke + 'kupiti');
         }
     }
+    this.luksuzCena = this.cenaPoKomadu > 10;
 }
 
 function Lista() {
@@ -346,6 +347,10 @@ function Lista() {
     this.listaZaKupovinu = function() {
         return this.lista.forEach(stavka => stavka.kupiti());
     }
+    this.luksuznaRoba = function() {
+        return this.lista.filter(stavka => stavka.luksuzCena).map(stavka => console.log(stavka.imeStavke));
+        }
+    }
 }
 
 var stavka1 =  new Stavka('kupus', 1, 10, true);
@@ -367,4 +372,5 @@ console.log('Test 3');
 console.log('Stavke po ukupnoj ceni' + lista1.ukupnaCenaStavke());
 console.log(lista1.ukupnaCenaStavke());
 console.log(lista1.listaZaKupovinu());
-console.log(lista1.kupljeneStavke())
+console.log(lista1.kupljeneStavke());
+console.log(lista1.luksuznaRoba());
