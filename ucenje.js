@@ -348,13 +348,15 @@ function Lista() {
         return this.lista.forEach(stavka => stavka.kupiti());
     }
     this.luksuznaRoba = function() {
-        return this.lista.filter(stavka => stavka.luksuzCena).map(stavka => stavka.imeStavke)
-        ;
+        return this.lista.filter(stavka => stavka.luksuzCena).map(stavka => stavka.imeStavke);
     }
-    this.obrisiStavku = function(stavka) {
-        return function() {
-            return this.lista.splice(stavka,1);
-        }
+    this.obrisiStavku = function(imestavke) {
+        var stavka = this.lista.find(stavka => stavka.imeStavke == imestavke);
+        console.log('hocu da obrisem');
+        console.log(stavka);
+        var index = this.lista.indexOf(stavka);
+        console.log(index);
+        this.lista.splice(index,1);
     }
 
 }
