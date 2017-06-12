@@ -11,7 +11,9 @@ function Restoran(ime, vremeOtvaranja, vremeZatvaranja, adresa, meni, kapacitet)
     this.stolovi = [];
     this.porudzbine = [];
     this.dodajRezervaciju = function(rezervacija) {
-        return this.porudzbine.push(rezervacija);
+        if (rezervacija.brojOsoba <= this.kapacitet) {
+            return this.porudzbine.push(rezervacija);
+        }
     }
     this.listaRezervacija = function() {
         return this.porudzbine.forEach(rez => console.log(rez));
@@ -68,6 +70,28 @@ function Rezervacija(ime, prezime, brojOsoba, dan, vreme) {
     this.dan = dan;
     this.vreme = vreme;
 }
+function Sto(rezervisan) {
+    this.rezervisan = rezervisan;
+    this.slobodan = this.rezervisan == false;
+    this.rezervisan = this.rezervisan == true;
+    this.rezervacijaStola = function() {
+        if (this.rezervisan == false) {
+            return this.rezervisan == true + console.log('Sto je slobodan');
+        }
+        else {
+            console.log('Zao nam je Sto je zauzet');
+        }
+    }
+    this.DaLiJeStoRezervisan = function() {
+        if (this.rezervisan == this.slobodan) {
+            console.log('Sto je slobodan')
+        }
+        else {
+            console.log('Sto je zauset')
+        }
+    }
+
+}
 
 
 // Objects
@@ -80,6 +104,7 @@ var rakija = new Jelo('rakija', 400, 'pice');
 var beckaSnicla = new Jelo('Becka snicla', 1300, 'meso');
 var sopskaSalata = new Jelo('salata', 'sopska salata', 'salata');
 var rezervacija1 = new Rezervacija('Vladimir', 'Bajceta', 2, 'Subota', 18);
+var sto1 = new Sto(false);
 
 meni1.dodajJelo(sarma);
 meni1.dodajJelo(princesKrofne);
@@ -90,3 +115,4 @@ console.log(meni1.spisakJela());
 console.log(restoran1.dodajRezervaciju(rezervacija1));
 console.log(restoran1.odgovorNaRezervaciju(rezervacija1));
 console.log(restoran1.listaRezervacija(rezervacija1));
+console.log(sto1.DaLiJeStoRezervisan());
