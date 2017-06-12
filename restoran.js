@@ -93,26 +93,43 @@ function Sto(rezervisan) {
 
 }
 
+function Table(){
+    this._reserved=false;
+    this.isReserved = () => this._reserved;
+    this.reserve = function() {
+        if (this.isReserved()) {
+            return false;
+        } else {
+            this._reserved=true;
+            return true;
+        }
+    }
+}
+
+var t1 = new Table();
+console.log(t1.isReserved());
+console.log(t1.reserve());
+console.log(t1.reserve());
 
 // Objects
 
-var restoran1 = new Restoran('Sunlight', 7, 2, 'Safarikova 4a', 'meni1', 10);
-var meni1 = new Meni('meni1');
-var sarma = new Jelo('sarma', 1000, 'kuvano');
-var princesKrofne = new Jelo('princes korfne', 700, 'kolac');
-var rakija = new Jelo('rakija', 400, 'pice');
-var beckaSnicla = new Jelo('Becka snicla', 1300, 'meso');
-var sopskaSalata = new Jelo('salata', 'sopska salata', 'salata');
-var rezervacija1 = new Rezervacija('Vladimir', 'Bajceta', 2, 'Subota', 18);
-var sto1 = new Sto(false);
+// var restoran1 = new Restoran('Sunlight', 7, 2, 'Safarikova 4a', 'meni1', 10);
+// var meni1 = new Meni('meni1');
+// var sarma = new Jelo('sarma', 1000, 'kuvano');
+// var princesKrofne = new Jelo('princes korfne', 700, 'kolac');
+// var rakija = new Jelo('rakija', 400, 'pice');
+// var beckaSnicla = new Jelo('Becka snicla', 1300, 'meso');
+// var sopskaSalata = new Jelo('salata', 'sopska salata', 'salata');
+// var rezervacija1 = new Rezervacija('Vladimir', 'Bajceta', 2, 'Subota', 18);
+// var sto1 = new Sto(false);
 
-meni1.dodajJelo(sarma);
-meni1.dodajJelo(princesKrofne);
-meni1.dodajJelo(rakija);
-meni1.dodajJelo(beckaSnicla);
-meni1.dodajJelo(sopskaSalata);
-console.log(meni1.spisakJela());
-console.log(restoran1.dodajRezervaciju(rezervacija1));
-console.log(restoran1.odgovorNaRezervaciju(rezervacija1));
-console.log(restoran1.listaRezervacija(rezervacija1));
-console.log(sto1.DaLiJeStoRezervisan());
+// meni1.dodajJelo(sarma);
+// meni1.dodajJelo(princesKrofne);
+// meni1.dodajJelo(rakija);
+// meni1.dodajJelo(beckaSnicla);
+// meni1.dodajJelo(sopskaSalata);
+// console.log(meni1.spisakJela());
+// console.log(restoran1.dodajRezervaciju(rezervacija1));
+// console.log(restoran1.odgovorNaRezervaciju(rezervacija1));
+// console.log(restoran1.listaRezervacija(rezervacija1));
+// console.log(sto1.DaLiJeStoRezervisan());
