@@ -350,13 +350,18 @@ function Lista() {
     this.luksuznaRoba = function() {
         return this.lista.filter(stavka => stavka.luksuzCena).map(stavka => stavka.imeStavke);
     }
-    this.obrisiStavku = function(imestavke) {
-        var stavka = this.lista.find(stavka => stavka.imeStavke == imestavke);
-        console.log('hocu da obrisem');
-        console.log(stavka);
+    // this.obrisiStavku = function(imestavke) {
+    //     var stavka = this.lista.find(stavka => stavka.imeStavke == imestavke);
+    //     console.log('hocu da obrisem');
+    //     console.log(stavka);
+    //     var index = this.lista.indexOf(stavka);
+    //     console.log(index);
+    //     this.lista.splice(index,1);
+    // }
+    this.obrisi = function(stavkaZaObrisati) {
+        var stavka = this.lista.find(stavka => stavka.imeStavke == stavkaZaObrisati);
         var index = this.lista.indexOf(stavka);
-        console.log(index);
-        this.lista.splice(index,1);
+        this.lista.splice(index, 1);
     }
 
 }
@@ -383,6 +388,6 @@ console.log(lista1.listaZaKupovinu());
 console.log(lista1.kupljeneStavke());
 console.log(lista1.luksuznaRoba());
 console.log('gde sam?')
-console.log(lista1.obrisiStavku('kupus'));
+console.log(lista1.obrisi('kupus'));
 console.log(lista1.spisak());
 
