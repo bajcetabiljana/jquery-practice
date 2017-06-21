@@ -1,0 +1,110 @@
+<html>
+
+<head>
+    <title>Learning Java Script</title>
+    <link rel="stylesheet" type="text/css" href="practice.css">
+</head>
+
+<body>
+    <div class="adding">
+        <h2>FORM FOR ADDING TWO NUMBERS</h2>
+        <form method="post" name="addingForm">
+            <title>X &nbsp; = &nbsp; </title>
+            <input type="text" name="x" size="5">
+            <br>
+            <br>
+            <title>Y &nbsp;=&nbsp; </title>
+            <input type="text" name="y" size="5">
+            <br>
+            <br>
+            <input type="button" name="add" value="ADD" onClick="addNumbers()">
+            <br>
+            <br>
+            <title>Score &nbsp; = &nbsp;</title>
+            <input type="text" name="score" size="5">
+        </form>
+    </div>
+    <hr>
+    <div>
+        <h2>Calculator</h2>
+        <form method="post" name="calculate">
+            <title> Add first number: &nbsp; </title>
+            <input type="text" name="first">
+            <br>
+            <br>
+            <title> Add second number: &nbsp; </title>
+            <input type="text" name="second">
+            <br>
+            <br>
+            <input type="button" value="+" onClick="add()">
+            <input type="button" onClick="substract()" value="-">
+            <input type="button" onClick="multiplay()" value="*">
+            <input type="button" onClick="devide()" value="/">
+            <br>
+            <br>
+            <title>Score: &nbsp; </title>
+            <input type="text" name="score">
+        </form>
+    </div>
+    <hr>
+    <div>
+        <h2>Calculator</h2>
+        <form method="post" name="cal">
+            <title> Add first number: &nbsp; </title>
+            <input type="text" name="first">
+            <br>
+            <br>
+            <title> Add second number: &nbsp; </title>
+            <input type="text" name="second">
+            <br>
+            <br>
+            <input type="button" value="+" onClick="calculator(1)">
+            <input type="button" value="-" onClick="calculator(2)">
+            <input type="button" value="*" onClick="calculator(3)">
+            <input type="button" value="/" onClick="calculator(4)">
+            <br>
+            <br>
+            <title>Score: &nbsp; </title>
+            <input type="text" name="score">
+        </form>
+    </div>
+    <div>
+        <hr>
+        <h2>FActorial</h2>
+        <table cellspacing="0" cellpadding="6" border="0" bgcolor="#99AA99" width="350">
+            <form name="factorial">
+                <tr>
+                    <td>
+                        Unesite <i>n</i> da bi izracunali <i>n!</i>
+                    </td>
+                    <td>
+                        <input type="text" name="number" value="" size="20" maxlength="3">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="calculate" onclick="calculateFactorial()">
+                        <!-- na dogadjaj klik misem na dugme se
+ poziva funkcija racunaj-->
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        Rezultat je
+                    </td>
+                    <td>
+                        <input name="result" value="" size="20">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+            </form>
+        </table>
+    </div>
+</body>
+<script type="text/javascript" src="jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="practice.js"></script>
+
+</html>
