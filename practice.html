@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="practice.css">
 </head>
 
-<body>
+<body onLoad="Vreme()">
     <div class="adding">
         <h2>FORM FOR ADDING TWO NUMBERS</h2>
         <form method="post" name="addingForm">
@@ -68,6 +68,7 @@
             <input type="text" name="score">
         </form>
     </div>
+    <hr>
     <div>
         <hr>
         <h2>FActorial</h2>
@@ -84,8 +85,7 @@
                 <tr>
                     <td>
                         <input type="submit" value="calculate" onclick="calculateFactorial()">
-                        <!-- na dogadjaj klik misem na dugme se
- poziva funkcija racunaj-->
+                        <!-- na dogadjaj klik misem na dugme se poziva funkcija racunaj-->
                     </td>
                     <td>&nbsp;</td>
                 </tr>
@@ -102,6 +102,35 @@
                 </tr>
             </form>
         </table>
+    </div>
+    <hr>
+    <div>
+        <h2>Rendom quotes</h2>
+    </div>
+    <div>
+        <h2>Odlaganje izvrsjenja</h2>
+        <form name="texts">
+            <input type="text" name="myText" value="Press click" size="30"> &nbsp; &nbsp;
+            <input type="button" name="newText" value="click" onclick="changeText()">
+        </form>
+    </div>
+    <hr>
+    <div>
+        <h2>BROJAC-On each 2sec increas number for 1</h2>
+        <form action="" name="countDown">
+            <input type="text" name="num" value="100">
+            <input type="button" onclick="startCountingDown()" value="start counting down">
+            <input type="button" onclick="startCountingUp()" value="start counting">
+            <input type="button" onclick="stop()" value="stop counting">
+        </form>
+    </div>
+    <hr>
+    <div>
+        <h2>Curent Time</h2>
+        <form name="vremeForma">
+            Trenutno vreme je &nbsp
+            <INPUT type="text" name="cifre" size=12 value="">
+        </form>
     </div>
 </body>
 <script type="text/javascript" src="jquery-3.2.0.min.js"></script>
